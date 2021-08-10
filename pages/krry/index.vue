@@ -15,6 +15,7 @@
       <button @click="addTodo">添加</button>
     </div>
     <el-button @click="changeQuery">改变 query 参数</el-button>
+    <el-button @click="addVuex">设置vuex</el-button>
   </div>
 </template>
 <script>
@@ -24,6 +25,7 @@ import {
   useRouter,
   defineComponent,
   onMounted,
+  useStore,
 } from '@nuxtjs/composition-api'
 
 export default defineComponent({
@@ -37,9 +39,8 @@ export default defineComponent({
   //   }
   // },
   asyncData(context) {
-
     context.app.myInjectedFunction('ctx!')
-    
+
     const { params, query } = context
 
     return { myturn: '123', paramsQuery: { params, query } }
@@ -60,7 +61,7 @@ export default defineComponent({
     })
 
     // onMounted() {
-      // context.$myInjectedFunction('krry')
+    // context.$myInjectedFunction('krry')
     // },
 
     // ref
@@ -84,6 +85,7 @@ export default defineComponent({
         name: 'reactive 自增' + len,
       })
     }
+
     const router = useRouter()
     const changeQuery = () => {
       router.push({
@@ -93,6 +95,15 @@ export default defineComponent({
         },
       })
     }
+
+    // vuex
+    const store = useStore()
+    console.log(121212, store.state.modules.blog)
+    store.dispatch('modules/blog/setClassify', '郭企鹅')
+    const addVuex = () => {
+      store.commit('increment')
+    }
+
     return {
       krryRef,
       changeQuery,
@@ -100,6 +111,7 @@ export default defineComponent({
       addEle,
       dataObj,
       addTodo,
+      addVuex,
     }
   },
 })
