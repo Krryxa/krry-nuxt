@@ -98,7 +98,7 @@ export default defineComponent({
 
     // vuex
     const store = useStore()
-    console.log(121212, store.state.modules.blog)
+    console.log(store.state.modules.blog)
     store.dispatch('modules/blog/setClassify', '郭企鹅')
     const addVuex = () => {
       store.commit('increment')

@@ -1,9 +1,9 @@
 import actions from './actions'
 import mutations from './mutations'
 
-const state = {
+const state = () => ({
   classifyList: []
-}
+})
 
 // 计算属性
 const getters = {
