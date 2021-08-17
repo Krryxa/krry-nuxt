@@ -6,7 +6,12 @@
 </template>
 
 <script>
-import { defineComponent, ref, useRoute, useContext } from '@nuxtjs/composition-api'
+import {
+  defineComponent,
+  ref,
+  useRoute,
+  useContext,
+} from '@nuxtjs/composition-api'
 // import { getBlog } from '@/api/blog'
 
 export default defineComponent({
@@ -29,14 +34,13 @@ export default defineComponent({
     const blog = ref({})
 
     const getData = async () => {
-      blog.value =  await $axios.get(`/krryblog/blog/getBlogDetail/${id}`)
+      blog.value = await $axios.get(`/krryblog/blog/getBlogDetail/${id}`)
     }
 
     getData()
 
     // 使用 api 文件实例
     // const apiData = getBlog(id)
-    
 
     return {
       blog,

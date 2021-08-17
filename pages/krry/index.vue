@@ -26,6 +26,7 @@ import {
   defineComponent,
   onMounted,
   useStore,
+  getCurrentInstance,
 } from '@nuxtjs/composition-api'
 
 export default defineComponent({
@@ -51,6 +52,10 @@ export default defineComponent({
 
   setup(props, context) {
     console.log('setup 参数：', props, context)
+
+    const { proxy } = getCurrentInstance()
+
+    proxy.$krryFunc()
 
     // 获取 dom 节点，命名必须要与 dom ref 相同，在 mounted 之后可获取。必须要 return 这个 ref
     const krryRef = ref(null)

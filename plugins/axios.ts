@@ -2,7 +2,7 @@ export default function ({ $axios, redirect }: any) {
   $axios.onRequest((config: any) => {
     console.log('Making request to ' + config.url)
   })
-  
+
   $axios.onResponse((response: any) => {
     if (response.status === 200) {
       return response.data
